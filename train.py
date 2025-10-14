@@ -1,15 +1,3 @@
-"""
-Comprehensive QISN training pipeline supporting:
-- Individual dataset training
-- Combined dataset training 
-- Fine-tuning pre-trained models
-
-Usage:
-    python train.py --mode individual --dataset ohio --epochs 100
-    python train.py --mode combined --datasets ohio,hupa --epochs 100
-    python train.py --mode finetune --source_dataset ohio --target_dataset hupa --epochs 50
-"""
-
 import argparse
 import logging
 import os
