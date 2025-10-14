@@ -1,9 +1,3 @@
-"""
-SHAP analysis functionality for glucose prediction models.
-Provides explainability for model predictions with automatic feature detection.
-Supports all model architectures: QISN, SAINT, FT-Transformer, TabPFN, PatchTST, TST, Informer, TabNet.
-"""
-
 import torch
 import numpy as np
 import pandas as pd
