@@ -1,6 +1,6 @@
-# 🩺 Glucose Prediction with Transformer Models
+# 🩺 Generalization of Learning from Tabular Data in the Medical Domain
 
-A comprehensive deep learning framework for glucose prediction using state-of-the-art transformer architectures. This repository provides a unified interface for training and evaluating multiple transformer models on tabular time-series glucose data.
+A comprehensive research framework investigating the generalization capabilities of transformer models on medical tabular data. This repository provides a unified interface for training and evaluating multiple state-of-the-art transformer architectures, using diabetes glucose prediction as a case study.
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
@@ -22,14 +22,23 @@ A comprehensive deep learning framework for glucose prediction using state-of-th
 
 ## 🎯 Overview
 
-This project implements a unified framework for glucose prediction using advanced transformer architectures. It supports multiple state-of-the-art models specifically adapted for tabular time-series data, making it ideal for continuous glucose monitoring (CGM) data analysis and prediction.
+This project investigates **generalization capabilities of deep learning models on medical tabular data**, with diabetes glucose prediction as a primary case study. The framework provides a comprehensive testbed for evaluating how different transformer architectures handle the unique challenges of medical tabular data: mixed feature types, temporal dependencies, missing values, and cross-patient generalization.
+
+### Research Focus
+
+This work addresses key questions in medical machine learning:
+- **How do different transformer architectures generalize across patients?**
+- **Which models best handle the heterogeneity of medical tabular data?**
+- **What architectural features improve robustness in clinical settings?**
+- **How do models perform with limited training data (common in medical domains)?**
 
 ### Key Highlights
 
 - **7 Transformer Architectures**: SAINT, FT-Transformer, TabPFN, PatchTST, TST, Informer, TabNet
-- **Traditional ML Models**: Support for XGBoost, LightGBM, CatBoost, Random Forest, and MLP
-- **Unified Interface**: Single API for all models with consistent input/output formats
-- **Production Ready**: Comprehensive error handling, logging, and model checkpointing
+- **Traditional ML Baselines**: XGBoost, LightGBM, CatBoost, Random Forest, and MLP for comparison
+- **Unified Interface**: Consistent API enabling fair model comparison and reproducibility
+- **Medical Domain Adaptations**: Handles mixed features, temporal patterns, and patient-level splits
+- **Generalization Analysis**: Tools for evaluating cross-patient and cross-dataset performance
 - **Flexible Configuration**: Easy hyperparameter tuning and model customization
 
 ## ✨ Features
@@ -53,10 +62,17 @@ This project implements a unified framework for glucose prediction using advance
 - Automatic generation of interpretability plots
 - Feature importance rankings and visualizations
 
-⚡ **Intelligent Feature Discovery**
-- Automatically identifies categorical and continuous features
-- Extracts temporal features (hour, day of week, cyclic features)
-- Smart cardinality-based feature classification
+⚡ **Medical Domain Considerations**
+- Patient-level data splitting for proper generalization evaluation
+- Handles mixed clinical data types (lab values, demographics, temporal patterns)
+- Robust to missing values and irregular sampling common in medical records
+- Cross-patient validation for real-world clinical deployment scenarios
+
+🔬 **Research-Oriented Features**
+- Comprehensive model comparison framework
+- Reproducible experiments with consistent evaluation protocols
+- Extensible architecture for testing new models and adaptations
+- Performance tracking across multiple generalization scenarios
 
 ## 🤖 Available Models
 
@@ -528,10 +544,12 @@ python verify_model_update.py
 If you use this code in your research, please cite:
 
 ```bibtex
-@software{glucose_prediction_transformers,
-  title={Glucose Prediction with Transformer Models},
+@article{your_research_2025,
+  title={Generalization of Learning from Tabular Data in the Medical Domain: A Diabetes Case Study},
   author={Your Name},
+  journal={Under Review},
   year={2025},
+  note={Investigating transformer architectures for cross-patient generalization in medical tabular data},
   url={https://github.com/yourusername/glucose-prediction}
 }
 ```
@@ -578,7 +596,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Original transformer implementations from respective papers
 - PyTorch team for the excellent deep learning framework
+- The diabetes and medical AI research communities
 - The open-source community for inspiration and support
+
+## 🎓 Research Context
+
+This work is part of broader research on **generalization in medical machine learning**. The diabetes glucose prediction task serves as an ideal case study because it:
+- Contains rich temporal patterns requiring sequence modeling
+- Includes both categorical (demographics) and continuous (physiological) features
+- Exhibits significant inter-patient variability (generalization challenge)
+- Has clinical relevance with potential real-world impact
+- Provides interpretable features for explainability analysis
+
+Future extensions may include:
+- Multi-task learning across different medical prediction tasks
+- Domain adaptation techniques for cross-hospital generalization
+- Federated learning approaches for privacy-preserving medical AI
+- Evaluation on additional medical tabular datasets
 
 ## 📞 Contact
 
@@ -589,8 +623,18 @@ For questions and support:
 
 ---
 
-**Note**: This is a research project. Please consult with healthcare professionals before using any glucose prediction models in clinical settings.
+## ⚕️ Medical Research Disclaimer
 
-**⭐ If you find this project helpful, please consider giving it a star!**
+**This is a research project for studying generalization in medical machine learning.** The models and code are provided for research and educational purposes only. Any glucose prediction models should:
+- Be validated extensively before clinical use
+- Undergo proper regulatory approval processes
+- Be reviewed by qualified healthcare professionals
+- Never replace professional medical advice or devices
 
-**Made with ❤️ for the diabetes research community**
+The primary goal is advancing our understanding of how deep learning models generalize on medical tabular data, not immediate clinical deployment.
+
+---
+
+**⭐ If you find this research helpful, please consider giving it a star!**
+
+**Made with ❤️ for the medical AI and diabetes research communities**
