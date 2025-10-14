@@ -210,7 +210,7 @@ P002,2023-01-01 09:00:00,98,30,F,24.1
 ```
 glucose-prediction/
 ├── data_utils.py          # Universal data preprocessing
-├── model.py               # Unified model factory + QISN architecture  
+├── model.py               # Unified model factory with all transformer models
 ├── train.py               # Training pipeline with multi-model CLI
 ├── shap_utils.py          # Universal SHAP analysis for all models
 ├── transformer_models/    # Transformer implementations
@@ -227,7 +227,7 @@ glucose-prediction/
 
 | Argument | Description | Options |
 |----------|-------------|---------|
-| `--model` | Model architecture | `qisn`, `saint`, `ft-transformer`, `tabpfn`, `patchtst`, `tst`, `informer`, `tabnet` |
+| `--model` | Model architecture | `saint`, `ft-transformer`, `tabpfn`, `patchtst`, `tst`, `informer`, `tabnet` |
 
 ### Model Hyperparameters
 
@@ -238,7 +238,6 @@ glucose-prediction/
 | `--heads` | Number of attention heads | 8 | Transformer models |
 | `--attn_dropout` | Attention dropout rate | 0.1 | Transformer models |
 | `--ff_dropout` | Feed-forward dropout rate | 0.1 | All models |
-| `--n_states` | Number of quantum states | 4 | QISN only |
 | `--patch_len` | Patch length | 3 | PatchTST only |
 | `--stride` | Patch stride | 1 | PatchTST only |
 | `--factor` | Sparse attention factor | 5 | Informer only |
@@ -275,12 +274,6 @@ glucose-prediction/
 | `--world_size` | Number of GPUs | Auto-detect |
 
 ## Model Architecture Details
-
-### QISN (Quantum-Inspired Superposition Network)
-- **Innovation**: Quantum superposition states for feature representation
-- **Strengths**: Handles missing values naturally, complex feature interactions
-- **Best for**: Datasets with missing values, medium-sized sequences
-- **Parameters**: `--n_states` (quantum states), `--dim`, `--depth`
 
 ### SAINT (Self-Attention and Intersample Attention Transformer)
 - **Innovation**: Intersample attention for tabular data
@@ -332,9 +325,9 @@ glucose-prediction/
 python train.py --mode individual --data_path small_dataset.csv \
     --model tabpfn --dim 64 --epochs 50
 
-# QISN - handles missing values well
+# SAINT - handles mixed feature types well
 python train.py --mode individual --data_path small_dataset.csv \
-    --model qisn --n_states 6 --dim 128 --epochs 100
+    --model saint --dim 128 --depth 6 --epochs 100
 ```
 
 ### Example 2: Long Time Series (> 50 timesteps)
@@ -383,12 +376,12 @@ python train.py --mode individual --data_path large_dataset.csv \
 
 ## Model Architecture
 
-The QISN (Quantum-Inspired Superposition Network) uses:
+The transformer models use various architectures optimized for different scenarios:
 
-1. **Quantum State Layer**: Represents features in superposition states
-2. **Entanglement Layer**: Multi-head attention for feature interactions  
-3. **Collapse Mechanism**: Smart feature selection based on thresholds
-4. **Temporal Encoding**: Handles sequential glucose patterns
+1. **Self-Attention Mechanisms**: Capture temporal dependencies and feature interactions
+2. **Feature Embedding**: Specialized handling for categorical and continuous features
+3. **Positional Encoding**: Temporal information for sequential glucose patterns
+4. **Adaptive Architectures**: Model-specific innovations (patching, sparse attention, etc.)
 
 ## Automatic Feature Detection
 
