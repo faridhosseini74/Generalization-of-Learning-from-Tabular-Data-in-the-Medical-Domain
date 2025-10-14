@@ -1,8 +1,3 @@
-"""
-Universal data utilities for glucose prediction with automatic dataset structure detection.
-Works with any CSV/Parquet file containing glucose time series data.
-"""
-
 import pandas as pd
 import numpy as np
 import torch
